@@ -95,24 +95,11 @@ router.post('/create-teacher', function(req, res) {
   })
 });
 
-router.get('/get-assignment', function (req, res, next) {
-    AddAssignment.find({}, function (err, assignment) {
+router.get('/get-assignment', function(req, res) {
+  AddAssignment.find({}, function (err, assignment) {
     if(err){
       console.log(err);
       res.send("false");
-      return;
-    }
-    else{
-      res.send(assignment);
-    }
-  })
-});
-
-router.get('/get-submit-assignment', function (req, res) {
-    SubmitAssignment.find({}, function (err, assignment) {
-    if(err){
-      console.log(err);
-      res.send(false);
       return;
     }
     else{
@@ -134,11 +121,11 @@ router.post('/add-assignments', upload.single('file'), function(req, res) {
   res.send(false);
 });
 
-router.get('/get-assignments', function(req, res) {
-  AddAssignment.find({}, function (err, assignment) {
+router.get('/get-submit-assignment', function (req, res) {
+    SubmitAssignment.find({}, function (err, assignment) {
     if(err){
       console.log(err);
-      res.send("false");
+      res.send(false);
       return;
     }
     else{
